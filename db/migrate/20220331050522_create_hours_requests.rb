@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateHoursRequests < ActiveRecord::Migration[6.1]
   def change
     create_table :hours_request do |t|

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
@@ -9,10 +7,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :position
       t.string :email
       t.string :password_digest
-      t.integer :networking_points
+      t.integer :service_points
       t.integer :brother_points
-      t.integer :professionalism_points
-      t.float :meeting_hours
+      t.integer :social_points
+      t.float :study_hours
       t.boolean :is_officer
       t.boolean :is_admin
       t.string :image_url

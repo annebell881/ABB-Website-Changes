@@ -5,7 +5,9 @@ class PageController < ApplicationController
 
   def index
     msg = params[:notice]
-    flash.now[:notice] = msg unless msg.nil?
+    unless msg.nil?
+      flash.now[:notice] = msg
+    end
   end
 
   def about; end

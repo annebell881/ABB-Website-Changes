@@ -39,10 +39,10 @@ jobs:
           cmd: install
       - name: Run tests
         run: bundler exec rspec .
-      - name: Run brakeman --no-exit-on-warn --no-exit-on-error
+      - name: Run brakeman
         run: brakeman -o brakeman.txt
       - name: Run rubocop
-        run: bundler exec rubocop --fail-level error --out rubocop.txt
+        run: bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
