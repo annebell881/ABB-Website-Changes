@@ -1,0 +1,169 @@
+<% @page_title = "About ABB" %>
+<%= stylesheet_link_tag 'about' %>
+<% content_for :main do %>
+<% @about_message = Message.find_by name: 'About Message' %>
+<% @about_message_2 = Message.find_by name: 'About Message 2' %>
+<% @about_image = ExtraImage.find_by group: 'About Image'%>
+
+<% @integrity_message = Message.find_by name: 'Integrity Message' %>
+<% @integrity_image = ExtraImage.find_by group: 'Integrity Image'%>
+<% @integrity_message_by = Message.find_by name: 'Integrity Message By' %>
+
+<% @professionalism_message = Message.find_by name: 'Professionalism Message' %>
+<% @professionalism_image = ExtraImage.find_by group: 'Professionalism Image'%>
+<% @professionalism_message_by = Message.find_by name: 'Professionalism Message By' %>
+
+<% @brotherhood_message = Message.find_by name: 'Brotherhood Message' %>
+<% @brotherhood_image = ExtraImage.find_by group: 'Brotherhood Image'%>
+<% @brotherhood_message_by = Message.find_by name: 'Brotherhood Message By' %>
+
+<% @service_message = Message.find_by name: 'Service Message' %>
+<% @service_image = ExtraImage.find_by group: 'Service Image'%>
+<% @service_message_by = Message.find_by name: 'Service Message By' %>
+
+<main>
+   <%= render :partial => 'page/nav_bar' %>
+   <div class="container first-container-about container-fluid">
+        <div class = "row first-row make-f">
+            <p class="tamu-row-1">Texas A&M’s Professional Brotherhood</p>
+
+        </div>
+        <div class = "row about-row">
+            <div class="col-lg-8 what-is-abb order-last">
+                <h1>What is ABB?</h1>
+                <hr style="color:white">
+                <p class="about-brandon">
+                <% if @about_message && @about_message.content %>
+                    <%= @about_message.content %>
+                <% else %>
+                    Create a message named 'About Message' and making its content whatever text you want to be displayed here.
+                <% end %>
+                <br>
+                <br>
+                <% if @about_message_2 && @about_message_2.content %>
+                    <%= @about_message_2.content %>
+                <% end %>
+​                </p>
+            </div>
+            <div class="col-lg-4 pic-of-brandon-div order-first">
+                  <% if @about_image && @about_image.image.attached? %>
+                    <%= image_tag @about_image.image, :class => "pic-brandon" %>
+                  <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                  <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container second-container-about">
+        <div class="mask-snow"></div>
+        <div class="image-snow">
+            <%= image_tag "snow.jpg", :class => "snow-background" %>
+        </div>
+        <div class="row our-core-values-div">
+            <h3 class="core-values">Our Core Values</h3>
+        </div>
+        <div class="row core-values-first-row row-padding-change">
+            <div class="col-lg-4">
+                <p class= "pic-theme-about">Integrity</p>
+                <% if @integrity_image && @integrity_image.image.attached? %>
+                    <%= image_tag @integrity_image.image %>
+                <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                <% end %>
+            </div>
+            <div class="col-lg-8 quote-about">
+                <p>
+                <% if @integrity_message && @integrity_message.content %>
+                    <%= @integrity_message.content %>
+                <% else %>
+                    Create a message named 'Integrity Message' and making its content whatever text you want to be displayed here.
+                <% end %>
+                    <br>
+                    <br>
+                    <% if @integrity_message_by && @integrity_message_by.content %>
+                        <%= @integrity_message_by.content %>
+                    <% end %>
+                </p>
+            </div>
+        </div>
+        <div class="row core-values-first-row row-padding-change">
+
+            <div class="col-lg-8 quote-about quote-about-right order-md-2 order-sm-2 order-xs-2">
+                <p>
+                <% if @professionalism_message && @professionalism_message.content %>
+                    <%= @professionalism_message.content %>
+                <% else %>
+                    Create a message named 'Professionalism Message' and making its content whatever text you want to be displayed here.
+                <% end %>
+                <br>
+                <br>
+                <% if @professionalism_message_by && @professionalism_message_by.content %>
+                    <%= @professionalism_message_by.content %>
+                <% end %>
+                </p>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first">
+                <p class= "pic-theme-about">Professionalism</p>
+                <% if @professionalism_image && @professionalism_image.image.attached? %>
+                    <%= image_tag @professionalism_image.image %>
+                <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container third-container-about">
+        <div class="row core-values-first-row row-padding-change">
+            <div class="col-lg-4">
+                <p class= "pic-theme-about">Brotherhood</p>
+                <% if @brotherhood_image && @brotherhood_image.image.attached? %>
+                    <%= image_tag @brotherhood_image.image, :class => "core-values-pic integrity-pic" %>
+                <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                <% end %>
+            </div>
+            <div class="col-lg-8 quote-about">
+                <p>
+                <% if @brotherhood_message && @brotherhood_message.content %>
+                    <%= @brotherhood_message.content %>
+                <% else %>
+                    Create a message named 'Brotherhood Message' and making its content whatever text you want to be displayed here.
+                <% end %>
+                <br>
+                <br>
+                <% if @brotherhood_message_by && @brotherhood_message_by.content %>
+                    <%= @brotherhood_message_by.content %>
+                <% end %>
+                </p>
+            </div>
+        </div>
+        <div class="row core-values-first-row row-padding-change">
+
+            <div class="col-lg-8 quote-about quote-about-right order-md-2 order-sm-2 order-xs-2">
+                <p>
+                <% if @service_message && @service_message.content %>
+                    <%= @service_message.content %>
+                <% else %>
+                    Create a message named 'Service Message' and making its content whatever text you want to be displayed here.
+                <% end %>
+                <br>
+                <br>
+                <% if @service_message_by && @service_message_by.content %>
+                    <%= @service_message_by.content %>
+                <% end %> 
+                </p>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first">
+                <p class= "pic-theme-about">Unity</p>
+                <% if @service_image && @service_image.image.attached? %>
+                    <%= image_tag @service_image.image, :class => "core-values-pic integrity-pic" %>
+                <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</main>
+<% end %>

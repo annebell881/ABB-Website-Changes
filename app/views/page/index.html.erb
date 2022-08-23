@@ -1,0 +1,108 @@
+<% @page_title = "ABB Home" %>
+<%= stylesheet_link_tag 'home' %>
+<% @home_message = Message.find_by name: 'Home Message' %>
+<% @carousel_images = ExtraImage.where(group: "Carousel").find_each %>
+<% @first_image = ExtraImage.find_by group: 'First Image'%>
+<% content_for :main do %>
+<main>
+   <%= render :partial => 'page/nav_bar' %>
+   <div class="container first-container">
+      <div class = "row first-row make-f">
+         <p class="tamu-row-1">Texas A&M’s Professional Brotherhood</p>
+         <h1>Aggie Business Brothers</h1>
+      </div>
+      <div class = "row">
+         <div class="col-lg image-slideshow">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                  <% if @first_image && @first_image.image.attached? %>
+                     <%= image_tag @first_image.image, :class => "group-photo" %>
+                  <% else %>
+                     <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                  <% end %>
+                  </div>
+                  <% @carousel_images.each do |carousel_image| %>
+                     <div class="carousel-item">
+                        <% if carousel_image.image.attached? %>
+                           <%= image_tag carousel_image.image, :class => "group-photo" %>
+                        <% else %>
+                           <%= image_tag 'defaultProf.jpg', width: "50px", height: "50px" %>
+                        <% end %>
+                     </div>
+                  <% end %>
+               </div>
+               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only"></span>
+               </a>
+               <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only"></span>
+               </a>
+            </div>
+         </div>
+         <div class = "about-us col-lg">
+            <h1>About Us</h1>
+            <hr>
+            <p>
+               <% if @home_message && @home_message.content %>
+                  <%= @home_message.content %>
+               <% else %>
+                  This message is nil...like a nil pickle. Fix it by creating a message named 'Home Message' and making its content whatever text you want to be displayed here.
+               <% end %>
+            </p>
+         </div>
+      </div>
+      <div class="mask"></div>
+   </div>
+   <div class="container second-container">
+      <h1 style="text-align:center">Questions</h1>
+      <hr>
+      <div class="submit-questions">
+         <%= form_tag :action=>:send_email, :controller=>"membership" do %>
+            <div class="field">
+                  <strong>First Name</strong>
+                  <%= text_field "first_name", "first_name", class: "form-control", placeholder: "John" %>
+            </div>
+            <div class="field">
+                  <strong>Last Name</strong>
+                  <%= text_field "last_name", "last_name", class: "form-control", placeholder: "Doe" %>
+            </div>
+            
+            <div class="field">
+                  <strong>Email</strong>
+                  <%= text_field "email", "email", class: "form-control", placeholder: "doe@tamu.edu" %>
+            </div>
+            <div class="field">
+                  <strong>Number</strong>
+                  <%= text_field "number", "number", class: "form-control", placeholder: "123-456-7890" %>
+            </div>
+            <div class="field">
+                  <strong>Message</strong>
+                  <%= text_area "message", "message", :rows => 5, class: "form-control", placeholder: "Send us a message!" %>
+            </div>
+
+            <div class="actions">
+                  <%= submit_tag "Submit Question", class: "btn btn-primary" %>
+            </div>
+         <% end %>
+         <div class="row d-flex w-100 logos-png">
+            <div class="col align-items-end ig-png-div">
+               <div>
+                  <a href="https://www.instagram.com/tamuabb/" target = "_blank">
+                    <%= image_tag "ig-png.png", :class => "ig-png" %>
+                  </a>
+               </div>
+            </div>
+            <div class="col align-items-start linkedin-png-div">
+               <div>
+                  <a href="https://www.linkedin.com/in/aggie-business-brothers-801a9a232/">
+                    <%= image_tag "linkedIn-png.png", :class => "linkedin-png" %>
+                  </a>
+               </div>
+            </div>
+         </div>
+   </div>
+</main>
+<% end %>

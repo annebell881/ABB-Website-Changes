@@ -1,0 +1,113 @@
+<% @page_title = "ABB Our Team Page" %>
+<%= stylesheet_link_tag 'home' %>
+<% @officer_members = User.find_by position: 'Officer' %>
+
+<% content_for :main do %>
+    <main>
+       <%= render :partial => 'page/nav_bar' %>
+       <div class="container first-container">
+          <div class = "row first-row make-f">
+             <p>Texas A&M’s Professional Brotherhood</p>
+             <h1>Our Team Page</h1>
+          </div>
+          <div class = "row">
+            <div class = "about-us col-lg">
+               <h1>Executive Team</h1>
+               <hr>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Brandon_Homann.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Brandon Homann | President</figcaption>
+                  <a href="mailto: brandon.homann@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Collin_Froehlich.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Collin Froehlich | Vice President</figcaption>
+                  <a href="mailto: Froehlichcollin@yahoo.com" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Nate_Garcia.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Nate Garcia | VP of Finance</figcaption>
+                  <a href="mailto: Nategarcia@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Tony_Hernandez.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Tony Hernandez | VP of Brotherhood</figcaption>
+                  <a href="mailto: antonio.hernandez23@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Dilan_Patel.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Dilan Patel | VP of Networking</figcaption>
+                  <a href="mailto: Dilan.Patel@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Thomas_Traicoff.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Thomas Traicoff | VP of Community Service</figcaption>
+                  <a href="mailto: ttraicoff@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Jacob_Grigsby.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Jacob Grigsby | VP of Public Relations</figcaption>
+                  <a href="mailto: Jacobgrigsby@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+               <figure class="figure">
+                  <%= image_tag "member_pictures/Brock_Cantu.webp", :class => "figure-img img-fluid rounded", :style => "width:250px; height:auto;"%>
+                  <figcaption class="figure-caption" style="color:white;">Brock Cantu | VP of Professionalism</figcaption>
+                  <a href="mailto: Brockcan2@tamu.edu" class="btn btn-primary" style="background-color:black; border: 2px solid black;">Contact Me</a>
+               </figure>
+            </div>
+          </div>
+          <div class="mask"></div>
+       </div>
+       <div class="container second-container">
+          <h1 style="text-align:center">Questions</h1>
+          <hr>
+          <div class="submit-questions">
+            <%= form_tag :action=>:send_email, :controller=>"membership" do %>
+               <div class="field">
+                     <strong>First Name</strong>
+                     <%= text_field "first_name", "first_name", class: "form-control", placeholder: "John" %>
+               </div>
+               <div class="field">
+                     <strong>Last Name</strong>
+                     <%= text_field "last_name", "last_name", class: "form-control", placeholder: "Doe" %>
+               </div>
+               
+               <div class="field">
+                     <strong>Email</strong>
+                     <%= text_field "email", "email", class: "form-control", placeholder: "doe@tamu.edu" %>
+               </div>
+               <div class="field">
+                     <strong>Number</strong>
+                     <%= text_field "number", "number", class: "form-control", placeholder: "123-456-7890" %>
+               </div>
+               <div class="field">
+                     <strong>Message</strong>
+                     <%= text_area "message", "message", :rows => 5, class: "form-control", placeholder: "Send us a message!" %>
+               </div>
+
+               <div class="actions">
+                     <%= submit_tag "Submit Question", class: "btn btn-primary" %>
+               </div>
+            <% end %>
+
+
+             <div class="row d-flex w-100 logos-png">
+                <div class="col align-items-end ig-png-div">
+                   <div>
+                      <a href="https://www.instagram.com/tamuabb/" target = "_blank">
+                        <%= image_tag "ig-png.png", :class => "ig-png" %>
+                      </a>
+                   </div>
+                </div>
+                <div class="col align-items-start linkedin-png-div">
+                   <div>
+                      <a href="https://www.linkedin.com/in/aggie-business-brothers-801a9a232/">
+                        <%= image_tag "linkedIn-png.png", :class => "linkedin-png" %>
+                      </a>
+                   </div>
+                </div>
+             </div>
+          </form>
+       </div>
+    </main>
+    <% end %>

@@ -1,0 +1,54 @@
+<% provide(:title, "Create An Account") %>
+<%= stylesheet_link_tag 'create_account' %>
+
+<div class = "rev"></div>
+
+<div class = "forma forma-login" style="color:black !important; padding-bottom: 100px;">
+  <div class = "sign-up-title">Create an Account </div>
+  <br>
+
+  <%= form_with(model: user) do |form| %>
+    <div class = "flash-error-color">
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  
+    <%= form.label :name, "Full Name:" %>
+    <%= form.text_field :name, class: "form-control"%>
+  
+    <br>
+  
+    <%= form.label :email, "Email:" %>
+    <%= form.email_field :email, class: "form-control" %>
+
+    <br>
+  
+    <%= form.label :password, "Password:" %>
+    <%= form.password_field :password, class: "form-control" %>
+
+    <br>
+  
+    <%= form.label :password_confirmation, "Confirm Password:" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+
+    <br>
+  
+    <%= form.submit "Create Account", class: "btn btn-primary" %>
+  <% end %>
+  <br>
+  <p style="font-size:16px;">Have an account? <u> <a href="/login" class="login-button" style="color:blue;">Log in</a> </u><p>
+  <hr>
+  <a href="/index" style="color:white;"><button type="button" class="buttonLog-back">Back</button></a>
+  <%if !logged_in? %>
+    <a href="admins/sign_in" style="color:white;"><button type="button" class="buttonLog-back">Login as Admin</button></a>
+  <%end%>
+</div>
