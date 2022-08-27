@@ -64,16 +64,16 @@ class HourRequestsController < ApplicationController
 
     user = User.find(request.user_id)
     
-    if category == "Service"
+    if category == "Networking"
       user.service_points += approved_points
       user.save
-    elsif category == "Brother"
+    elsif category == "Brotherhood"
       user.brother_points += approved_points
       user.save
-    elsif category == "Social"
+    elsif category == "Professionalism"
       user.social_points += approved_points
       user.save
-    elsif category == "Study"
+    elsif category == "Meetings"
       user.study_hours += approved_points
       user.save
     end

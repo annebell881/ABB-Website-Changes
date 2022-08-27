@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    @user.is_admin = false
+    @user.is_admin = true
     @user.service_points = 0
     @user.brother_points = 0
     @user.social_points = 0

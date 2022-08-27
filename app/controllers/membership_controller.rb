@@ -47,16 +47,16 @@ class MembershipController < ApplicationController
 
       user = User.find(user_id)
     
-      if category == "Service"
+      if category == "Networking"
         user.service_points += event.point_value
         user.save
-      elsif category == "Brother"
+      elsif category == "Brotherhood"
         user.brother_points += event.point_value
         user.save
-      elsif category == "Social"
+      elsif category == "Prossionalism"
         user.social_points += event.point_value
         user.save
-      elsif category == "Study"
+      elsif category == "Meetings"
         user.study_hours += event.point_value
         user.save
       end
